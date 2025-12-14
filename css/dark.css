@@ -1,0 +1,21 @@
+/* ============================= FileLab – Dark Theme Rules Enforced Dark Mode ONLY ============================= */
+
+/* Disable light mode completely */ @media (prefers-color-scheme: light) { body { background: #121212 !important; color: #E6E6E6 !important; } }
+
+/* Scrollbar */ ::-webkit-scrollbar { width: 8px; }
+
+::-webkit-scrollbar-track { background: #1E1E1E; }
+
+::-webkit-scrollbar-thumb { background: #2ED6C9; border-radius: 8px; }
+
+/* Selection */ ::selection { background: #2ED6C9; color: #003734; }
+
+/* Links */ a { color: #2ED6C9; text-decoration: none; }
+
+a:hover { text-decoration: underline; }
+
+/* Elevation */ .elevation-1 { box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+
+.elevation-2 { box-shadow: 0 6px 12px rgba(0,0,0,0.4); }
+
+/* Utility */ .hidden { display: none; }
