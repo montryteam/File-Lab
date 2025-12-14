@@ -1,0 +1,261 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lambo AI – FileLab</title>  <!-- Material Symbols -->  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />  <style>
+    /* =============================
+       FileLab – Lambo AI
+       Material 3 Dark ONLY
+       ============================= */
+
+    :root {
+      --primary: #2ED6C9;
+      --primary-container: #0F3F3A;
+      --background: #121212;
+      --surface: #1E1E1E;
+      --surface-variant: #2A2A2A;
+      --outline: #3C3C3C;
+      --text-primary: #E6E6E6;
+      --text-secondary: #A1A1A1;
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: var(--background);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+
+    header {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--outline);
+    }
+
+    header .material-symbols-outlined {
+      font-size: 26px;
+      color: var(--primary);
+    }
+
+    header h1 {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--outline);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .card h2 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    label {
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      background: var(--surface-variant);
+      border: 1px solid var(--outline);
+      border-radius: 12px;
+      padding: 10px;
+      color: var(--text-primary);
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .btn {
+      margin-top: 12px;
+      background: var(--primary);
+      color: #003734;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn.outline {
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    .status {
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .status.ok { color: #4CAF50; }
+    .status.err { color: #F44336; }
+
+    /* Bottom Nav */
+    nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-top: 1px solid var(--outline);
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .nav-item.active {
+      color: var(--primary);
+    }
+
+    .nav-item .material-symbols-outlined {
+      font-size: 22px;
+    }
+  </style></head>
+<body><header>
+  <span class="material-symbols-outlined">smart_toy</span>
+  <h1>Lambo AI</h1>
+</header><main>  <!-- API KEY SETTINGS -->  <div class="card">
+    <h2>Gemini API Key</h2>
+    <p>Your API key is stored locally in your browser.</p><label>API Key</label>
+<input type="password" id="apiKey" placeholder="AIza..." />
+
+<button class="btn" onclick="saveKey()">
+  <span class="material-symbols-outlined">save</span>
+  Save Key
+</button>
+
+<button class="btn outline" onclick="clearKey()">
+  <span class="material-symbols-outlined">delete</span>
+  Clear
+</button>
+
+<div id="keyStatus" class="status"></div>
+
+  </div>  <!-- AI IMAGE GENERATOR -->  <div class="card">
+    <h2>AI Image Generator</h2>
+    <p>Generate images using Lambo (Gemini).</p><label>Prompt</label>
+<textarea id="imgPrompt" placeholder="A futuristic teal lab..." ></textarea>
+
+<label>Style</label>
+<select id="imgStyle">
+  <option>Realistic</option>
+  <option>Anime</option>
+  <option>Illustration</option>
+  <option>Logo</option>
+</select>
+
+<button class="btn" onclick="generateImage()">
+  <span class="material-symbols-outlined">auto_awesome</span>
+  Generate Image
+</button>
+
+<div id="imgResult" class="status"></div>
+
+  </div>  <!-- AI WORD GENERATOR -->  <div class="card">
+    <h2>AI Word Generator</h2>
+    <p>Create Word documents with AI.</p><label>Document Topic</label>
+<textarea id="docPrompt" placeholder="Write a professional CV..." ></textarea>
+
+<button class="btn" onclick="generateDoc()">
+  <span class="material-symbols-outlined">description</span>
+  Generate DOCX
+</button>
+
+<div id="docResult" class="status"></div>
+
+  </div></main><nav>
+  <div class="nav-item">
+    <span class="material-symbols-outlined">home</span>
+    Home
+  </div>
+  <div class="nav-item active">
+    <span class="material-symbols-outlined">smart_toy</span>
+    AI
+  </div>
+  <div class="nav-item">
+    <span class="material-symbols-outlined">build</span>
+    Tools
+  </div>
+  <div class="nav-item">
+    <span class="material-symbols-outlined">settings</span>
+    Settings
+  </div>
+</nav><script>
+  // Load saved key
+  const savedKey = localStorage.getItem("lambo_gemini_key");
+  if (savedKey) document.getElementById("apiKey").value = savedKey;
+
+  function saveKey() {
+    const key = document.getElementById("apiKey").value.trim();
+    if (!key) return setStatus("keyStatus", "Key is empty", false);
+    localStorage.setItem("lambo_gemini_key", key);
+    setStatus("keyStatus", "API key saved locally", true);
+  }
+
+  function clearKey() {
+    localStorage.removeItem("lambo_gemini_key");
+    document.getElementById("apiKey").value = "";
+    setStatus("keyStatus", "API key removed", true);
+  }
+
+  function setStatus(id, text, ok) {
+    const el = document.getElementById(id);
+    el.textContent = text;
+    el.className = "status " + (ok ? "ok" : "err");
+  }
+
+  function generateImage() {
+    setStatus("imgResult", "Image generation will be implemented next", true);
+  }
+
+  function generateDoc() {
+    setStatus("docResult", "DOCX generation will be implemented next", true);
+  }
+</script></body>
+</html>
