@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FileLab</title>  <!-- Material Symbols -->  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />  <style>
+    /* =============================
+       Material 3 Dark ONLY – FileLab
+       Primary Color: 🧪 Teal-Cyan
+       ============================= */
+
+    :root {
+      --primary: #2ED6C9;
+      --primary-container: #0F3F3A;
+      --background: #121212;
+      --surface: #1E1E1E;
+      --surface-variant: #2A2A2A;
+      --outline: #3C3C3C;
+      --text-primary: #E6E6E6;
+      --text-secondary: #A1A1A1;
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: var(--background);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--surface);
+      border-bottom: 1px solid var(--outline);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .logo span {
+      font-size: 28px;
+    }
+
+    /* Main */
+    main {
+      padding: 20px;
+    }
+
+    .hero {
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Tool Grid */
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+    }
+
+    .tool-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 16px;
+      border: 1px solid var(--outline);
+      transition: transform 0.2s ease, border 0.2s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+    }
+
+    .tool-icon {
+      font-size: 36px;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .tool-card h3 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .tool-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* Bottom Nav (Mobile First) */
+    nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-top: 1px solid var(--outline);
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+    }
+
+    nav .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    nav .nav-item.active {
+      color: var(--primary);
+    }
+
+    nav .material-symbols-outlined {
+      font-size: 22px;
+    }
+
+    /* Desktop Enhancement */
+    @media (min-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      main {
+        max-width: 1100px;
+        margin: auto;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+    }
+  </style></head>
+<body>  <!-- Header -->  <header>
+    <div class="logo">
+      <span class="material-symbols-outlined">science</span>
+      FileLab
+    </div>
+  </header>  <!-- Main Content -->  <main>
+    <section class="hero">
+      <h1>Your files. Your AI. Your rules.</h1>
+      <p>
+        Free tools for images, files and AI — all running locally in your browser.
+        No ads. No login. No tracking.
+      </p>
+    </section><section class="tools">
+  <div class="tool-card">
+    <div class="tool-icon material-symbols-outlined">image</div>
+    <h3>Image Tools</h3>
+    <p>Resize, effects, convert, upscale</p>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-icon material-symbols-outlined">picture_as_pdf</div>
+    <h3>PDF Tools</h3>
+    <p>Merge, split, convert PDFs</p>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-icon material-symbols-outlined">description</div>
+    <h3>Word & Docs</h3>
+    <p>Create & convert documents</p>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-icon material-symbols-outlined">smart_toy</div>
+    <h3>Lambo AI</h3>
+    <p>Images & documents with Gemini</p>
+  </div>
+</section>
+
+  </main>  <!-- Bottom Navigation (Mobile) -->  <nav>
+    <div class="nav-item active">
+      <span class="material-symbols-outlined">home</span>
+      Home
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined">build</span>
+      Tools
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined">smart_toy</span>
+      AI
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined">settings</span>
+      Settings
+    </div>
+  </nav></body>
+</html>
